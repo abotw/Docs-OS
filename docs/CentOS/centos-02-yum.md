@@ -69,15 +69,16 @@ YUM will:
 
 Type `y` and press Enter.
 
-------
+```sh
+# Install a new package and assume yes to all questions (also works with update, great for automated updates):
+yum -y install package
+```
 
 ### 4.2 Remove a Package
 
 ```bash
 sudo yum remove vim
 ```
-
-------
 
 ### 4.3 Update All Packages
 
