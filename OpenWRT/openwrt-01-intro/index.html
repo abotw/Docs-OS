@@ -1,0 +1,3036 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://abotw.github.io/docs-os/OpenWRT/openwrt-01-intro/">
+      
+      
+        <link rel="prev" href="../../Misc/xdg/">
+      
+      
+        <link rel="next" href="../../PiOS/vnc/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>OpenWrt-01: Intro - OS Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openwrt-01-intro" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OS Docs" class="md-header__button md-logo" aria-label="OS Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OS Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OpenWrt-01: Intro
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/abotw/docs-os" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OS Docs" class="md-nav__button md-logo" aria-label="OS Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OS Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/abotw/docs-os" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CentOS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-02-yum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS-02: YUM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-03-rpm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    rpm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    profile.d
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: Net
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-02-eth33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: ens33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-03-hosts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: Hosts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yum
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Yum
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/yum/RPM-and-yum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM &amp; yum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cmd
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cmd
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/awk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    awk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/grep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    grep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/sed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    set
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    source
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/systemctl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemctl Tutorial for Beginners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/tar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/xargs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xargs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Download
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/Download/curl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    curl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/Download/scp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cmd/Download/wget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    wget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Misc/xdg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XDG on Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWRT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenWRT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWrt-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWrt-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is OpenWrt?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-use-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why Use OpenWrt?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Why Use OpenWrt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-limitations-of-stock-router-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Limitations of Stock Router Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-advantages-of-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Advantages of OpenWrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-openwrt-architecture-simple-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. OpenWrt Architecture (Simple View)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. OpenWrt Architecture (Simple View)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-supported-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Supported Devices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Supported Devices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-openwrt-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How OpenWrt Is Installed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. How OpenWrt Is Installed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-installation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common Installation Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-first-boot-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. First Boot Experience
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. First Boot Experience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-default-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Default Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-first-things-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 First Things to Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-luci-web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. LuCI Web Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. LuCI Web Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-command-line-basics-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Command Line Basics (SSH)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Command Line Basics (SSH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-connect-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Connect via SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-useful-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Useful Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-package-management-with-opkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Package Management with opkg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Package Management with opkg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-network-configuration-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Network Configuration Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Network Configuration Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-firewall-concept-very-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Firewall Concept (Very Important)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Firewall Concept (Very Important)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-when-openwrt-is-not-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. When OpenWrt Is NOT Recommended
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-learning-path-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Learning Path Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiOS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PiOS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PiOS/vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pi OS: VNC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PiOS/wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pi OS: Wireless Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ubuntu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ubuntu/ubuntu-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ubuntu/ubuntu-centos-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu vs CentOS vs Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-net-cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Net Cmd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-ns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    netsh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/wsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    macOS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/net-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Net 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/pbcopy%2Bpbpaste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pbcopy &amp; pbpaste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is OpenWrt?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-use-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why Use OpenWrt?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Why Use OpenWrt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-limitations-of-stock-router-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Limitations of Stock Router Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-advantages-of-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Advantages of OpenWrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-openwrt-architecture-simple-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. OpenWrt Architecture (Simple View)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. OpenWrt Architecture (Simple View)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-supported-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Supported Devices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Supported Devices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-openwrt-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How OpenWrt Is Installed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. How OpenWrt Is Installed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-installation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common Installation Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-first-boot-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. First Boot Experience
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. First Boot Experience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-default-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Default Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-first-things-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 First Things to Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-luci-web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. LuCI Web Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. LuCI Web Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-command-line-basics-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Command Line Basics (SSH)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Command Line Basics (SSH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-connect-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Connect via SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-useful-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Useful Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-package-management-with-opkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Package Management with opkg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Package Management with opkg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-network-configuration-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Network Configuration Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Network Configuration Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-firewall-concept-very-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Firewall Concept (Very Important)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Firewall Concept (Very Important)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-when-openwrt-is-not-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. When OpenWrt Is NOT Recommended
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-learning-path-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Learning Path Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="openwrt-01-intro">OpenWrt-01: Intro</h1>
+<h2 id="1-what-is-openwrt">1. What Is OpenWrt?</h2>
+<p><strong>OpenWrt</strong> is an <strong>open-source embedded Linux operating system</strong> designed mainly for <strong>routers and network devices</strong>.</p>
+<p>Unlike stock router firmware (from TP-Link, Xiaomi, ASUS, etc.), OpenWrt is:</p>
+<ul>
+<li>A <strong>full Linux system</strong></li>
+<li>Highly <strong>customizable</strong></li>
+<li>Regularly <strong>updated</strong></li>
+<li>Designed for <strong>advanced networking</strong></li>
+</ul>
+<p>You can think of OpenWrt as:</p>
+<blockquote>
+<p><strong>“Ubuntu for routers”</strong></p>
+</blockquote>
+<hr />
+<h2 id="2-why-use-openwrt">2. Why Use OpenWrt?</h2>
+<h3 id="21-limitations-of-stock-router-firmware">2.1 Limitations of Stock Router Firmware</h3>
+<p>Most factory firmware:</p>
+<ul>
+<li>Has limited features</li>
+<li>Cannot install extra software</li>
+<li>Is rarely updated</li>
+<li>Locks advanced configuration</li>
+</ul>
+<h3 id="22-advantages-of-openwrt">2.2 Advantages of OpenWrt</h3>
+<p>OpenWrt gives you:</p>
+<ul>
+<li>✅ Full control over routing, firewall, Wi-Fi</li>
+<li>✅ Package manager (<code>opkg</code>)</li>
+<li>✅ SSH access</li>
+<li>✅ Advanced features:<ul>
+<li>VLAN</li>
+<li>VPN (WireGuard / OpenVPN)</li>
+<li>QoS / SQM</li>
+<li>Ad-blocking</li>
+<li>Mesh networking</li>
+</ul>
+</li>
+<li>✅ Long-term community support</li>
+</ul>
+<hr />
+<h2 id="3-openwrt-architecture-simple-view">3. OpenWrt Architecture (Simple View)</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+----------------------+
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|  User Interface      |
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|  - LuCI (Web UI)     |
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>|  - SSH (CLI)         |
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>+----------------------+
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>|  OpenWrt System      |
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>|  - BusyBox           |
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|  - procd             |
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|  - netifd            |
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>+----------------------+
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>|  Linux Kernel        |
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>+----------------------+
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>|  Router Hardware     |
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>+----------------------+
+</span></code></pre></div>
+<h3 id="key-components">Key Components</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LuCI</strong></td>
+<td>Web management interface</td>
+</tr>
+<tr>
+<td><strong>opkg</strong></td>
+<td>Package manager</td>
+</tr>
+<tr>
+<td><strong>BusyBox</strong></td>
+<td>Core Linux utilities</td>
+</tr>
+<tr>
+<td><strong>netifd</strong></td>
+<td>Network management</td>
+</tr>
+<tr>
+<td><strong>procd</strong></td>
+<td>Init system</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-supported-devices">4. Supported Devices</h2>
+<p>OpenWrt runs on:</p>
+<ul>
+<li>Home routers</li>
+<li>Travel routers</li>
+<li>Mini PCs</li>
+<li>Virtual machines</li>
+<li>Raspberry Pi</li>
+</ul>
+<h3 id="check-compatibility">Check Compatibility</h3>
+<p>Always check:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://openwrt.org/toh/start
+</span></code></pre></div>
+<p>Look for:</p>
+<ul>
+<li>Flash size</li>
+<li>RAM size</li>
+<li>Supported version</li>
+<li>Installation method</li>
+</ul>
+<hr />
+<h2 id="5-how-openwrt-is-installed">5. How OpenWrt Is Installed</h2>
+<h3 id="51-common-installation-methods">5.1 Common Installation Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>When Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web upgrade</td>
+<td>Stock firmware supports it</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>Recovery mode</td>
+</tr>
+<tr>
+<td>Serial console</td>
+<td>Advanced / bricked devices</td>
+</tr>
+<tr>
+<td>SD card</td>
+<td>Raspberry Pi</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Installing the wrong firmware <strong>can brick your router</strong>.</p>
+<hr />
+<h2 id="6-first-boot-experience">6. First Boot Experience</h2>
+<p>After installation:</p>
+<h3 id="61-default-access">6.1 Default Access</h3>
+<ul>
+<li><strong>IP address:</strong> <code>192.168.1.1</code></li>
+<li><strong>Username:</strong> <code>root</code></li>
+<li><strong>Password:</strong> <em>(empty)</em></li>
+</ul>
+<h3 id="62-first-things-to-do">6.2 First Things to Do</h3>
+<ol>
+<li>Set root password</li>
+<li>Configure WAN</li>
+<li>Enable Wi-Fi</li>
+<li>Update package list</li>
+</ol>
+<hr />
+<h2 id="7-luci-web-interface">7. LuCI Web Interface</h2>
+<p>LuCI is OpenWrt’s web UI.</p>
+<h3 id="key-sections">Key Sections</h3>
+<table>
+<thead>
+<tr>
+<th>Menu</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>System &amp; network status</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Interfaces, Wi-Fi, DHCP</td>
+</tr>
+<tr>
+<td>System</td>
+<td>Time, users, startup</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Installed services</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>Zones, rules, NAT</td>
+</tr>
+</tbody>
+</table>
+<p>LuCI makes OpenWrt usable <strong>without command-line knowledge</strong>.</p>
+<hr />
+<h2 id="8-command-line-basics-ssh">8. Command Line Basics (SSH)</h2>
+<h3 id="81-connect-via-ssh">8.1 Connect via SSH</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ssh<span class="w"> </span>root@192.168.1.1
+</span></code></pre></div>
+<h3 id="82-useful-commands">8.2 Useful Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opkg update</code></td>
+<td>Update package list</td>
+</tr>
+<tr>
+<td><code>opkg install xxx</code></td>
+<td>Install package</td>
+</tr>
+<tr>
+<td><code>opkg list-installed</code></td>
+<td>List packages</td>
+</tr>
+<tr>
+<td><code>reboot</code></td>
+<td>Reboot system</td>
+</tr>
+<tr>
+<td><code>logread</code></td>
+<td>View system logs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-package-management-with-opkg">9. Package Management with <code>opkg</code></h2>
+<p>OpenWrt uses <strong>opkg</strong>, similar to <code>apt</code> or <code>yum</code>.</p>
+<h3 id="example">Example</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>opkg<span class="w"> </span>update
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>opkg<span class="w"> </span>install<span class="w"> </span>htop
+</span></code></pre></div>
+<p>Common packages:</p>
+<ul>
+<li><code>luci-app-wireguard</code></li>
+<li><code>luci-app-openvpn</code></li>
+<li><code>luci-app-adblock</code></li>
+<li><code>luci-app-sqm</code></li>
+</ul>
+<hr />
+<h2 id="10-network-configuration-basics">10. Network Configuration Basics</h2>
+<h3 id="interfaces">Interfaces</h3>
+<p>OpenWrt uses logical interfaces:</p>
+<ul>
+<li><code>LAN</code></li>
+<li><code>WAN</code></li>
+<li><code>WAN6</code></li>
+</ul>
+<p>Each interface includes:</p>
+<ul>
+<li>Protocol (DHCP, PPPoE, Static)</li>
+<li>Firewall zone</li>
+<li>Physical device</li>
+</ul>
+<h3 id="wi-fi">Wi-Fi</h3>
+<p>Wi-Fi is <strong>disabled by default</strong> after installation.
+You must:</p>
+<ol>
+<li>Set SSID</li>
+<li>Set encryption</li>
+<li>Enable radio</li>
+</ol>
+<hr />
+<h2 id="11-firewall-concept-very-important">11. Firewall Concept (Very Important)</h2>
+<p>OpenWrt firewall is <strong>zone-based</strong>.</p>
+<h3 id="common-zones">Common Zones</h3>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN</td>
+<td>Trusted internal network</td>
+</tr>
+<tr>
+<td>WAN</td>
+<td>Untrusted internet</td>
+</tr>
+</tbody>
+</table>
+<p>Default rule:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>LAN → WAN : allowed
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>WAN → LAN : blocked
+</span></code></pre></div>
+<p>This provides strong security by default.</p>
+<hr />
+<h2 id="12-common-use-cases">12. Common Use Cases</h2>
+<p>OpenWrt is often used for:</p>
+<ul>
+<li>Home router replacement</li>
+<li>VPN gateway</li>
+<li>Ad-blocking router</li>
+<li>Smart home network isolation</li>
+<li>Campus / dorm networking</li>
+<li>Learning networking &amp; Linux</li>
+</ul>
+<hr />
+<h2 id="13-when-openwrt-is-not-recommended">13. When OpenWrt Is NOT Recommended</h2>
+<p>Avoid OpenWrt if:</p>
+<ul>
+<li>Your router has very small flash (&lt;8MB)</li>
+<li>You only want “plug and play”</li>
+<li>You are afraid of troubleshooting</li>
+</ul>
+<hr />
+<h2 id="14-learning-path-recommendation">14. Learning Path Recommendation</h2>
+<p>For beginners:</p>
+<ol>
+<li>Learn LuCI basics</li>
+<li>Understand WAN / LAN</li>
+<li>Learn opkg</li>
+<li>Try SSH</li>
+<li>Configure VPN</li>
+<li>Learn firewall rules</li>
+</ol>
+<hr />
+<h2 id="15-summary">15. Summary</h2>
+<p>OpenWrt is:</p>
+<ul>
+<li>A powerful Linux-based router OS</li>
+<li>Highly flexible and customizable</li>
+<li>Ideal for learning networking</li>
+<li>Best for users who want control</li>
+</ul>
+<p>If you know basic Linux, OpenWrt will feel <strong>very natural</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
