@@ -1,5 +1,7 @@
 ---
 title: "OpenWrt: Notes"
+icon: simple/openwrt
+status: done
 ---
 
 -   <https://github.com/openwrt/openwrt>

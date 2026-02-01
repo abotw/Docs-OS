@@ -1,5 +1,5 @@
 ---
-title: Opkg
+title: opkg
 status: draft
 ---
 
