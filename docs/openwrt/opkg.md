@@ -1,5 +1,6 @@
 ---
-title: opkg
+title: Opkg
+status: draft
 ---
 
 `opkg` is the package manager in OpenWrt, similar to `apt` on Debian/Ubuntu or `yum` on CentOS. It allows you to **install, remove, update, and manage software packages** on your router.
@@ -187,6 +188,3 @@ ls /dev/sd*
 | `opkg upgrade`         | Upgrade installed packages  |
 | `opkg list-upgradable` | List upgradable packages    |
 
-------
-
-With this knowledge, you can confidently manage software on your OpenWrt router using `opkg`.

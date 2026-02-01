@@ -1,8 +1,7 @@
-# Breed (Web) Beginner Tutorial
-
-*A simple guide to the OpenWrt / router bootloader*
-
-------
+---
+title: Breed
+status: draft
+---
 
 ## 1. What Is Breed?
 
